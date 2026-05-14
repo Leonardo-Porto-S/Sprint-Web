@@ -103,3 +103,147 @@ nav ul a:hover {
 #btn-tema:hover {
   background: var(--borda);
 }
+
+section {
+  padding: 5rem 2rem;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+section:not(#inicio) {
+  border-top: 1px solid var(--borda);
+}
+
+h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--texto);
+}
+
+.descricao {
+  color: var(--texto-suave);
+  margin-bottom: 2rem;
+}
+
+#inicio {
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+#inicio h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#inicio p {
+  font-size: 1.1rem;
+  color: var(--texto-suave);
+  margin-bottom: 2rem;
+}
+
+.btn-principal {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  background: var(--azul);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--fonte);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  text-decoration: none;
+}
+
+.btn-principal:hover {
+  background: var(--azul-hover);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.btn-principal:active {
+  transform: translateY(0);
+}
+
+.card {
+  background: var(--fundo-card);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 1.8rem;
+}
+
+.card-pequeno {
+  max-width: 480px;
+}
+
+#input-texto {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte-codigo);
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  transition: border-color 0.2s;
+}
+
+#input-texto:focus {
+  outline: none;
+  border-color: var(--azul);
+}
+
+.info-texto {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  margin-bottom: 1rem;
+}
+
+.botoes-texto {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.botoes-texto button {
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--borda);
+  border-radius: 6px;
+  background: var(--fundo);
+  color: var(--texto);
+  font-family: var(--fonte);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.botoes-texto button:hover {
+  background: var(--azul);
+  color: #fff;
+  border-color: var(--azul);
+}
+
+.btn-limpar:hover {
+  background: var(--vermelho) !important;
+  border-color: var(--vermelho) !important;
+}
+
+.resultado {
+  padding: 0.8rem 1rem;
+  background: var(--fundo);
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--azul);
+  border-radius: 6px;
+  font-family: var(--fonte-codigo);
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+
+.escondido {
+  display: none !important;
+}
