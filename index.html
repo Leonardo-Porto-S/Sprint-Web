@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevSpace — Sprint 2</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Dev<span>Space</span></div>
+    <ul>
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#ferramentas">Ferramentas</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#login">Login</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <button id="btn-tema">🌙 Tema</button>
+  </nav>
+
+  <section id="inicio">
+    <h1>Olá, mundo! 👋</h1>
+    <p>Um espaço simples para aprender e praticar desenvolvimento web.</p>
+    <a href="#ferramentas" class="btn-principal">Explorar →</a>
+  </section>
+
+  <section id="ferramentas">
+    <h2>Manipulação de Texto</h2>
+    <p class="descricao">Digite qualquer texto e experimente as transformações abaixo.</p>
+
+    <div class="card">
+      <input
+        type="text"
+        id="input-texto"
+        placeholder="Digite algo aqui..."
+        maxlength="150"
+      />
+      <p id="info-texto" class="info-texto">0 caracteres · 0 palavras</p>
+
+      <div class="botoes-texto">
+        <button onclick="transformar('maiusculo')">MAIÚSCULO</button>
+        <button onclick="transformar('minusculo')">minúsculo</button>
+        <button onclick="transformar('inverter')">oãtrevni</button>
+        <button onclick="transformar('contar')">Contar tudo</button>
+        <button onclick="transformar('limpar')" class="btn-limpar">Limpar</button>
+      </div>
+
+      <div id="resultado" class="resultado escondido"></div>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <h2>Tecnologias que usamos</h2>
+    <p class="descricao">As bases do desenvolvimento web moderno.</p>
+
+    <div class="slideshow">
+      <div class="slide ativo">
+        <div class="slide-icone">🌐</div>
+        <h3>HTML</h3>
+        <p>A linguagem que estrutura todo o conteúdo de uma página web.</p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-icone">🎨</div>
+        <h3>CSS</h3>
+        <p>Responsável pelo visual: cores, fontes, espaçamentos e animações.</p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-icone">⚡</div>
+        <h3>JavaScript</h3>
+        <p>Adiciona comportamento e interatividade às páginas.</p>
+      </div>
+
+      <div class="slide">
+        <div class="slide-icone">🐙</div>
+        <h3>Git & GitHub</h3>
+        <p>Ferramentas para versionar e compartilhar código em equipe.</p>
+      </div>
+
+      <div class="slide-controles">
+        <button id="btn-anterior">← Anterior</button>
+        <span id="slide-numero">1 / 4</span>
+        <button id="btn-proximo">Próximo →</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="login">
+    <h2>Login</h2>
+    <p class="descricao">Acesse sua conta para continuar.</p>
+
+    <div class="card card-pequeno">
+      <div class="campo">
+        <label for="login-email">E-mail</label>
+        <input type="text" id="login-email" placeholder="voce@email.com" />
+        <span class="erro" id="erro-email"></span>
+      </div>
+
+      <div class="campo">
+        <label for="login-senha">Senha</label>
+
+        <div class="campo-senha">
+          <input type="password" id="login-senha" placeholder="Sua senha" />
+          <button type="button" id="btn-ver-senha" title="Mostrar senha">👁</button>
+        </div>
+
+        <span class="erro" id="erro-senha"></span>
+
+        <div class="forca-barra">
+          <div id="forca-preenchimento"></div>
+        </div>
+
+        <span id="forca-texto" class="forca-label"></span>
+      </div>
+
+      <button class="btn-principal" id="btn-entrar">Entrar</button>
+
+      <p class="dica">
+        Use: <code>user@email.com</code> / <code>senha123</code>
+      </p>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2>Contato</h2>
+    <p class="descricao">Tem alguma dúvida? Manda uma mensagem.</p>
+
+    <div class="card card-pequeno">
+      <div class="campo">
+        <label for="contato-nome">Nome</label>
+        <input type="text" id="contato-nome" placeholder="Seu nome" />
+        <span class="erro" id="erro-nome"></span>
+      </div>
+
+      <div class="campo">
+        <label for="contato-email">E-mail</label>
+        <input type="text" id="contato-email" placeholder="voce@email.com" />
+        <span class="erro" id="erro-cemail"></span>
+      </div>
+
+      <div class="campo">
+        <label for="contato-msg">Mensagem</label>
+
+        <textarea
+          id="contato-msg"
+          rows="4"
+          placeholder="Escreva sua mensagem..."
+        ></textarea>
+
+        <span class="erro" id="erro-msg"></span>
+      </div>
+
+      <button class="btn-principal" id="btn-enviar">
+        Enviar mensagem
+      </button>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      DevSpace · Sprint 2 · Desenvolvido com HTML, CSS e JavaScript puro · 2026
+    </p>
+  </footer>
+
+  <div id="modal" class="escondido">
+    <div class="modal-caixa">
+      <p id="modal-icone"></p>
+      <h3 id="modal-titulo"></h3>
+      <p id="modal-mensagem"></p>
+      <button id="modal-fechar" class="btn-principal">OK</button>
+    </div>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
