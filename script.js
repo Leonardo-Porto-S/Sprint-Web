@@ -161,3 +161,112 @@ btnEntrar.addEventListener('click', function () {
     abrirModal('❌', 'Dados incorretos', 'Use user@email.com com a senha senha123.')
   }
 })
+
+const btnEnviar = document.getElementById('btn-enviar')
+
+btnEnviar.addEventListener('click', function () {
+  const nomeOk   = validarCampo(document.getElementById('contato-nome'),  'erro-nome',   2,  'Nome muito curto.')
+  const emailOk  = validarEmail(document.getElementById('contato-email'), 'erro-cemail')
+  const msgOk    = validarCampo(document.getElementById('contato-msg'),   'erro-msg',    10, 'Mensagem muito curta (mínimo 10 caracteres).')
+
+  if (!nomeOk || !emailOk || !msgOk) return
+
+  const nome = document.getElementById('contato-nome').value.split(' ')[0]
+  abrirModal('📬', 'Mensagem enviada!', `Obrigado, ${nome}! Em breve retornaremos.`)
+
+  // Limpa o formulário
+  document.getElementById('contato-nome').value  = ''
+  document.getElementById('contato-email').value = ''
+  document.getElementById('contato-msg').value   = ''
+  ;['contato-nome', 'contato-email', 'contato-msg'].forEach(function (id) {
+    const el = document.getElementById(id)
+    el.classList.remove('valido', 'invalido')
+  })
+})
+
+
+// ─────────────────────────────────
+// 6. MODAL
+// ─────────────────────────────────
+
+function abrirModal(icone, titulo, mensagem) {
+  document.getElementById('modal-icone').textContent   = icone
+  document.getElementById('modal-titulo').textContent  = titulo
+  document.getElementById('modal-mensagem').textContent = mensagem
+  document.getElementById('modal').classList.remove('escondido')
+}
+
+document.getElementById('modal-fechar').addEventListener('click', fecharModal)
+
+document.getElementById('modal').addEventListener('click', function (e) {
+  if (e.target === this) fecharModal()
+})
+
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') fecharModal()
+})
+
+function fecharModal() {
+  document.getElementById('modal').classList.add('escondido')
+}
+
+function validarEmail(campo, idErro) {
+  const valor = campo.value.trim()
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+  if (valor === '') {
+    marcarInvalido(campo, idErro, 'E-mail obrigatório.')
+    return false
+  }
+  if (!regex.test(valor)) {
+    marcarInvalido(campo, idErro, 'Digite um e-mail válido.')
+    return false
+  }
+
+  marcarValido(campo, idErro)
+  return true
+}
+
+function validarSenha(campo, idErro) {
+  const valor = campo.value
+
+  if (valor === '') {
+    marcarInvalido(campo, idErro, 'Senha obrigatória.')
+    return false
+  }
+  if (valor.length < 6) {
+    marcarInvalido(campo, idErro, 'A senha precisa ter pelo menos 6 caracteres.')
+    return false
+  }
+
+  marcarValido(campo, idErro)
+  return true
+}
+
+function validarCampo(campo, idErro, minChars, msgErro) {
+  const valor = campo.value.trim()
+
+  if (valor === '') {
+    marcarInvalido(campo, idErro, 'Este campo é obrigatório.')
+    return false
+  }
+  if (valor.length < minChars) {
+    marcarInvalido(campo, idErro, msgErro)
+    return false
+  }
+
+  marcarValido(campo, idErro)
+  return true
+}
+
+function marcarValido(campo, idErro) {
+  campo.classList.add('valido')
+  campo.classList.remove('invalido')
+  document.getElementById(idErro).textContent = ''
+}
+
+function marcarInvalido(campo, idErro, mensagem) {
+  campo.classList.add('invalido')
+  campo.classList.remove('valido')
+  document.getElementById(idErro).textContent = mensagem
+}
